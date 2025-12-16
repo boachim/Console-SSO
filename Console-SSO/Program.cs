@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.WinForms;
@@ -7,6 +8,9 @@ namespace Console_SSO
 {
     internal class Program
     {
+        private static readonly string ApplicationUrl = ConfigurationManager.AppSettings["ApplicationUrl"] 
+            ?? throw new InvalidOperationException("ApplicationUrl not configured in App.config");
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -66,7 +70,7 @@ namespace Console_SSO
                     ScriptErrorsSuppressed = true
                 };
 
-                browser.Navigate("https://testappproxy-aboachi.msappproxy.net/");
+                browser.Navigate(ApplicationUrl);
 
                 form.Controls.Add(browser);
                 Application.Run(form);
@@ -100,7 +104,7 @@ namespace Console_SSO
                 form.Load += async (s, e) =>
                 {
                     await webView.EnsureCoreWebView2Async();
-                    webView.CoreWebView2.Navigate("https://testappproxy-aboachi.msappproxy.net/");
+                    webView.CoreWebView2.Navigate(ApplicationUrl);
                 };
 
                 form.Controls.Add(webView);
