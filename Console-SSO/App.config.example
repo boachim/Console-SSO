@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+    <appSettings>
+        <!-- Configure your application URL here -->
+        <!-- Example: <add key="ApplicationUrl" value="https://your-app.example.com/" /> -->
+        <add key="ApplicationUrl" value="https://example.com/" />
+    </appSettings>
+</configuration>
